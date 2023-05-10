@@ -1,5 +1,6 @@
 package com.CovidManagementSystem.CovidManagementSystem.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.annotation.PersistenceCreator;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,6 +12,7 @@ import java.util.Date;
 public class Member {
     String firstName;
     String lastName;
+    @Id
     String id;
     String city;
     String street;

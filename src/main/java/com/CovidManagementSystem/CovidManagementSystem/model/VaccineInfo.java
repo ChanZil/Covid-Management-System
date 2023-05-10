@@ -1,6 +1,7 @@
 package com.CovidManagementSystem.CovidManagementSystem.model;
 
 import com.CovidManagementSystem.CovidManagementSystem.util.vaccineManufacturer;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,6 +9,7 @@ import java.util.Date;
 
 @Document
 public class VaccineInfo {
+    @Id
     String memberID;
     Date[] vaccineDate = new Date[4];
     com.CovidManagementSystem.CovidManagementSystem.util.vaccineManufacturer vaccineManufacturer;
