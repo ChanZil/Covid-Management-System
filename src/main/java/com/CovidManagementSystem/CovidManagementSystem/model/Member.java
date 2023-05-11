@@ -79,12 +79,8 @@ public class Member {
     }
 
     public void setDateOfBirth(String dateOfBirth) throws ParseException {
-        try {
-            Date date = new SimpleDateFormat("dd.MM.yyyy").parse(dateOfBirth);
+        if(tools.validDate(dateOfBirth))
             this.dateOfBirth = dateOfBirth;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
     }
 
     public String getPhoneNumber() {

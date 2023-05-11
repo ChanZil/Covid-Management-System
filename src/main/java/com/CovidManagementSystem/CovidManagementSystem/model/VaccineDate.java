@@ -11,7 +11,8 @@ public class VaccineDate {
     }
 
     public void setDate1(String date1) {
-        this.date1 = date1;
+        if(tools.validDate(date1))
+            this.date1 = date1;
     }
 
     public String getDate2() {
@@ -19,7 +20,8 @@ public class VaccineDate {
     }
 
     public void setDate2(String date2) {
-        this.date2 = date2;
+        if(tools.validDate(date2))
+            this.date2 = date2;
     }
 
     public String getDate3() {
@@ -27,7 +29,8 @@ public class VaccineDate {
     }
 
     public void setDate3(String date3) {
-        this.date3 = date3;
+        if(tools.validDate(date3))
+            this.date3 = date3;
     }
 
     public String getDate4() {
@@ -35,6 +38,7 @@ public class VaccineDate {
     }
 
     public void setDate4(String date4) {
-        this.date4 = date4;
+        if(tools.validDate(date4))
+            this.date4 = date4;
     }
 }

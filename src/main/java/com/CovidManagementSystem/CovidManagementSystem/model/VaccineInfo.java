@@ -4,6 +4,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -46,7 +48,8 @@ public class VaccineInfo {
     }
 
     public void setExposureDate(String exposureDate) {
-        this.exposureDate = exposureDate;
+        if(tools.validDate(exposureDate))
+            this.exposureDate = exposureDate;
     }
 
     public String getRecoveryDate() {
@@ -54,6 +57,7 @@ public class VaccineInfo {
     }
 
     public void setRecoveryDate(String recoveryDate) {
-        this.recoveryDate = recoveryDate;
+        if(tools.validDate(recoveryDate))
+            this.recoveryDate = recoveryDate;
     }
 }
