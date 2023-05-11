@@ -5,10 +5,13 @@ import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.annotation.PersistenceCreator;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
+import java.util.regex.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
-@Document
+@Document(collation = "member")
 public class Member {
     String firstName;
     String lastName;
@@ -17,39 +20,9 @@ public class Member {
     String city;
     String street;
     int houseNumber;
-    Date dateOfBirth;
+    String dateOfBirth;
     String phoneNumber;
     String mobilePhoneNumber;
-
-    @PersistenceConstructor
-    public Member(String firstName, String lastName,
-                  String id, String city, String street,
-                  int houseNumber, Date dateOfBirth,
-                  String phoneNumber, String mobilePhoneNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.id = id;
-        this.city = city;
-        this.street = street;
-        this.houseNumber = houseNumber;
-        this.dateOfBirth = dateOfBirth;
-        this.phoneNumber = phoneNumber;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-    }
-
-    public Member(String firstName, String lastName,
-                  String id, String city, String street,
-                  int houseNumber, Date dateOfBirth,
-                  String mobilePhoneNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.id = id;
-        this.city = city;
-        this.street = street;
-        this.houseNumber = houseNumber;
-        this.dateOfBirth = dateOfBirth;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -72,7 +45,8 @@ public class Member {
     }
 
     public void setId(String id) {
-        this.id = id;
+        if(Pattern.matches("[0-9]{9}", id))
+            this.id = id;
     }
 
     public String getCity() {
@@ -96,15 +70,21 @@ public class Member {
     }
 
     public void setHouseNumber(int houseNumber) {
-        this.houseNumber = houseNumber;
+        if(Pattern.matches("[0-9]+", String.valueOf(houseNumber)))
+            this.houseNumber = houseNumber;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setDateOfBirth(String dateOfBirth) throws ParseException {
+        try {
+            Date date = new SimpleDateFormat("dd.MM.yyyy").parse(dateOfBirth);
+            this.dateOfBirth = dateOfBirth;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getPhoneNumber() {
@@ -112,7 +92,8 @@ public class Member {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        if(Pattern.matches("[0-9]{9}", phoneNumber))
+            this.phoneNumber = phoneNumber;
     }
 
     public String getMobilePhoneNumber() {
@@ -120,6 +101,7 @@ public class Member {
     }
 
     public void setMobilePhoneNumber(String mobilePhoneNumber) {
-        this.mobilePhoneNumber = mobilePhoneNumber;
+        if(Pattern.matches("[0-9]{10}", mobilePhoneNumber))
+            this.mobilePhoneNumber = mobilePhoneNumber;
     }
 }

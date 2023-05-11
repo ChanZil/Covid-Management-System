@@ -7,43 +7,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-@Document
+@Document(collation = "vaccineInfo")
 public class VaccineInfo {
     @Id
     String memberID;
-    Date[] vaccineDate = new Date[4];
+    String[] vaccineDate = new String[4];
     com.CovidManagementSystem.CovidManagementSystem.util.vaccineManufacturer vaccineManufacturer;
-    Date exposureDate;
-    Date recoveryDate;
-
-    @PersistenceConstructor
-    public VaccineInfo(String memberID, Date[] vaccineDate,
-                       com.CovidManagementSystem.CovidManagementSystem.util.vaccineManufacturer vaccineManufacturer,
-                       Date exposureDate, Date recoveryDate) {
-        this.memberID = memberID;
-        this.vaccineDate = vaccineDate;
-        this.vaccineManufacturer = vaccineManufacturer;
-        this.exposureDate = exposureDate;
-        this.recoveryDate = recoveryDate;
-    }
-
-    public VaccineInfo(String memberID, Date[] vaccineDate,
-                       com.CovidManagementSystem.CovidManagementSystem
-                               .util.vaccineManufacturer vaccineManufacturer,
-                       Date exposureDate) {
-        this.memberID = memberID;
-        this.vaccineDate = vaccineDate;
-        this.vaccineManufacturer = vaccineManufacturer;
-        this.exposureDate = exposureDate;
-    }
-
-    public VaccineInfo(String memberID, Date[] vaccineDate,
-                       com.CovidManagementSystem.CovidManagementSystem
-                               .util.vaccineManufacturer vaccineManufacturer) {
-        this.memberID = memberID;
-        this.vaccineDate = vaccineDate;
-        this.vaccineManufacturer = vaccineManufacturer;
-    }
+    String exposureDate;
+    String recoveryDate;
 
     public VaccineInfo(String memberID) {
         this.memberID = memberID;
@@ -57,11 +28,11 @@ public class VaccineInfo {
         this.memberID = memberID;
     }
 
-    public Date[] getVaccineDate() {
+    public String[] getVaccineDate() {
         return vaccineDate;
     }
 
-    public void setVaccineDate(Date[] vaccineDate) {
+    public void setVaccineDate(String[] vaccineDate) {
         this.vaccineDate = vaccineDate;
     }
 
@@ -73,19 +44,19 @@ public class VaccineInfo {
         this.vaccineManufacturer = vaccineManufacturer;
     }
 
-    public Date getExposureDate() {
+    public String getExposureDate() {
         return exposureDate;
     }
 
-    public void setExposureDate(Date exposureDate) {
+    public void setExposureDate(String exposureDate) {
         this.exposureDate = exposureDate;
     }
 
-    public Date getRecoveryDate() {
+    public String getRecoveryDate() {
         return recoveryDate;
     }
 
-    public void setRecoveryDate(Date recoveryDate) {
+    public void setRecoveryDate(String recoveryDate) {
         this.recoveryDate = recoveryDate;
     }
 }
