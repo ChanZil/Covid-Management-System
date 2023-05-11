@@ -27,7 +27,6 @@ public class MemberController {
     @GetMapping("/all")
     public List<Member> getAllMembers() {
         List<Member> temp = memberService.getAllMembers();
-        System.out.println("000000000000000000000000000000000000");
         return temp;
     }
 

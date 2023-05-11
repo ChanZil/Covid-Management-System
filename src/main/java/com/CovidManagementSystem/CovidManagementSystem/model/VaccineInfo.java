@@ -1,24 +1,21 @@
 package com.CovidManagementSystem.CovidManagementSystem.model;
 
-import com.CovidManagementSystem.CovidManagementSystem.util.vaccineManufacturer;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.Date;
 
-@Document(collation = "vaccineInfo")
+@Document(collection = "vaccineInfo")
 public class VaccineInfo {
     @Id
     String memberID;
-    String[] vaccineDate = new String[4];
-    com.CovidManagementSystem.CovidManagementSystem.util.vaccineManufacturer vaccineManufacturer;
+    VaccineDate vaccineDate;
+    String vaccineManufacturer;
     String exposureDate;
     String recoveryDate;
 
-    public VaccineInfo(String memberID) {
-        this.memberID = memberID;
-    }
 
     public String getMemberID() {
         return memberID;
@@ -28,19 +25,19 @@ public class VaccineInfo {
         this.memberID = memberID;
     }
 
-    public String[] getVaccineDate() {
+    public VaccineDate getVaccineDate() {
         return vaccineDate;
     }
 
-    public void setVaccineDate(String[] vaccineDate) {
+    public void setVaccineDate(VaccineDate vaccineDate) {
         this.vaccineDate = vaccineDate;
     }
 
-    public com.CovidManagementSystem.CovidManagementSystem.util.vaccineManufacturer getVaccineManufacturer() {
+    public String getVaccineManufacturer() {
         return vaccineManufacturer;
     }
 
-    public void setVaccineManufacturer(com.CovidManagementSystem.CovidManagementSystem.util.vaccineManufacturer vaccineManufacturer) {
+    public void setVaccineManufacturer(String vaccineManufacturer) {
         this.vaccineManufacturer = vaccineManufacturer;
     }
 

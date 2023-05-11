@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-@Document(collation = "member")
+@Document(collection = "member")
 public class Member {
     String firstName;
     String lastName;
